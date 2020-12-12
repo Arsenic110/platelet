@@ -3,19 +3,25 @@ var divRoot = document.getElementById('div-root');
 var imageNormal = document.getElementById('image-normal');
 var imagePoke = document.getElementById('image-poke');
 
+var volume = 0.1;
+
+
+
 var audioMusic = createAudioElement(
     {
     'audio/ogg': 'public/sounds/music.ogg',
     'audio/mpeg': 'public/sounds/music.mp3'
     });
 audioMusic.loop = true;
-audioMusic.volume = 0.8;
+audioMusic.volume = volume;
 
 var audioPoke = createAudioElement(
     {
     'audio/ogg': 'public/sounds/poke.ogg',
     'audio/mpeg': 'public/sounds/poke.mp3'
     });
+
+    audioPoke.volume = volume;
 
 var reactionFiles = 
 [
@@ -35,6 +41,7 @@ var clicks = 0;
 function createAudioElement(source) 
 {
     var audioElement = document.createElement('audio');
+    audioElement.volume = volume;
     Object.keys(source).forEach(function(key) 
     {
         var sourceElement = document.createElement('source');
